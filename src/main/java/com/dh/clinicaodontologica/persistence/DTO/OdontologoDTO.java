@@ -12,6 +12,15 @@ public class OdontologoDTO {
     private String apellido;
     private Integer matricula;
 
+    public OdontologoDTO() {
+    }
+
+    public OdontologoDTO(String nombre, String apellido, Integer matricula) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.matricula = matricula;
+    }
+
     @Override
     public String toString() {
         return "OdontologoDTO{" +

@@ -14,6 +14,13 @@ public class DomicilioDTO {
     private String localidad;
     private String provincia;
 
+    public DomicilioDTO(String calle, int numero, String localidad, String provincia) {
+        this.calle = calle;
+        this.numero = numero;
+        this.localidad = localidad;
+        this.provincia = provincia;
+    }
+
     @Override
     public String toString() {
         return "DomicilioDTO{" +

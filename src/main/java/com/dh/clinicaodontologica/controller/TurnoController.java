@@ -18,7 +18,7 @@ public class TurnoController {
     TurnoServiceImpl turnoService;
 
     @PostMapping
-    public ResponseEntity<?> guardarTurno(@RequestBody TurnoDTO turnoDTO){
+    public ResponseEntity<?> guardarTurno(@RequestBody TurnoDTO turnoDTO) throws RecursoNoEncontradoException {
         turnoService.guardar(turnoDTO);
         return ResponseEntity.status(HttpStatus.OK).body("Se creo correctamente el turno");
     }

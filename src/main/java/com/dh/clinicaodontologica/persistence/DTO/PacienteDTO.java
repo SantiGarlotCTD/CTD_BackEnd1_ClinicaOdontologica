@@ -17,6 +17,14 @@ public class PacienteDTO {
     private Date fechaIngreso;
     private DomicilioDTO domicilio;
 
+    public PacienteDTO(String nombre, String apellido, String dni, Date fechaIngreso, DomicilioDTO domicilio) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.dni = dni;
+        this.fechaIngreso = fechaIngreso;
+        this.domicilio = domicilio;
+    }
+
     @Override
     public String toString() {
         return "PacienteDTO{" +

@@ -14,6 +14,12 @@ public class TurnoDTO {
     private OdontologoDTO odontologo;
     private Date fecha;
 
+    public TurnoDTO(PacienteDTO paciente, OdontologoDTO odontologo, Date fecha) {
+        this.paciente = paciente;
+        this.odontologo = odontologo;
+        this.fecha = fecha;
+    }
+
     @Override
     public String toString() {
         return "TrunoDTO{" +

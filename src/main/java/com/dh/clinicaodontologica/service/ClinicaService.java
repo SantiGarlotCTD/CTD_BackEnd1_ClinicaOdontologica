@@ -9,7 +9,7 @@ import java.util.Collection;
 @Service
 public interface ClinicaService<T> {
 
-    void guardar(T t);
+    void guardar(T t) throws RecursoNoEncontradoException;
 
     T buscarPorId(Long id);
 

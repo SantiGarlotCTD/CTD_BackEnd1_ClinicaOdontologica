@@ -1,6 +1,7 @@
 package com.dh.clinicaodontologica.service.Impl;
 
 import com.dh.clinicaodontologica.exceptions.RecursoNoEncontradoException;
+import com.dh.clinicaodontologica.persistence.DTO.OdontologoDTO;
 import com.dh.clinicaodontologica.persistence.DTO.PacienteDTO;
 import com.dh.clinicaodontologica.persistence.DTO.TurnoDTO;
 import com.dh.clinicaodontologica.persistence.entities.Turno;
@@ -20,22 +21,28 @@ public class TurnoServiceImpl implements ClinicaService<TurnoDTO> {
     @Autowired
     TurnoRepository turnoRepository;
     @Autowired
-    PacienteRepository pacienteRepository;
+    PacienteServiceImpl pacienteService;
     @Autowired
-    OdontologoRepository odontologoRepository;
+    OdontologoServiceImpl odontologoService;
 
     @Autowired
     ObjectMapper mapper;
 
     @Override
-    public void guardar(TurnoDTO turnoDTO) {
-        Turno turno = mapper.convertValue(turnoDTO, Turno.class);
-        turnoRepository.save(turno);
+    public void guardar(TurnoDTO turnoDTO) throws RecursoNoEncontradoException {
+        PacienteDTO paciente = pacienteService.buscarPorId(turnoDTO.getPaciente().getId());
+        OdontologoDTO odontologo = odontologoService.buscarPorId(turnoDTO.getOdontologo().getId());
+        if(paciente != null && odontologo != null){
+            Turno turno = mapper.convertValue(turnoDTO, Turno.class);
+            turnoRepository.save(turno);
+        } else {
+            throw new RecursoNoEncontradoException("El paciente o el odontologo no exite");
+        }
     }
 
     @Override
     public TurnoDTO buscarPorId(Long id) {
-        TurnoDTO turnoDTO = null;
+        TurnoDTO turnoDTO;
         Optional<Turno> turno = turnoRepository.findById(id);
         turnoDTO = mapper.convertValue(turno, TurnoDTO.class);
         return turnoDTO;
