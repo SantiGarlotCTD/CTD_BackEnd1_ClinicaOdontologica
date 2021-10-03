@@ -32,9 +32,9 @@ public class TurnoServiceTest {
     private TurnoServiceImpl turnoService;
 
     public void cargarDataSet() {
-        DomicilioDTO domicilio = new DomicilioDTO("Av Santa fe", 444, "CABA", "Buenos Aires");
-        pacienteService.guardar(new PacienteDTO("Santiago", "Paz", "88888888", new Date(), domicilio));
-        this.odontologoService.guardar(new OdontologoDTO("Santiago", "Paz", 3455647));
+        DomicilioDTO domicilio = new DomicilioDTO("Bv San Juan", 1252, "Capital", "Cordoba");
+        pacienteService.guardar(new PacienteDTO("Dolores", "deMuela", "123452", new Date(), domicilio));
+        odontologoService.guardar(new OdontologoDTO("Martina", "Molar", 9876));
     }
     @SneakyThrows
     @Test
@@ -47,6 +47,7 @@ public class TurnoServiceTest {
     public void buscarTurnoTest(){
         Assert.assertNotNull(turnoService.buscarPorId(1L));
     }
+
     @SneakyThrows
     @Test
     public void eliminarTurnoTest(){

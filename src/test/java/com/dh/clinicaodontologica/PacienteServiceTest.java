@@ -27,17 +27,18 @@ public class PacienteServiceTest {
 
 
     public void cargarDataSet() {
-        DomicilioDTO domicilio = new DomicilioDTO("Av Santa fe", 444, "CABA", "Buenos Aires");
+        DomicilioDTO domicilio = new DomicilioDTO("Av Colon", 123, "Cordoba", "Cordoba");
         pacienteService.guardar(new PacienteDTO("Santiago", "Paz", "88888888", new Date(), domicilio));
-        DomicilioDTO domicilio1 = new DomicilioDTO("Av Avellaneda", 333, "CABA", "Buenos Aires");
-        pacienteService.guardar(new PacienteDTO("Micaela", "Perez", "99999999", new Date(), domicilio1));
+        DomicilioDTO domicilio1 = new DomicilioDTO("La Tabalada", 333, "Cordoba", "Cordoba");
+        pacienteService.guardar(new PacienteDTO("Marcos", "Dipre", "99999999", new Date(), domicilio1));
 
     }
 
     @Test
     public void agregarYBuscarPacienteTest() {
         this.cargarDataSet();
-        pacienteService.guardar(new PacienteDTO("Tomas", "Pereyra", "12345678", new Date(), new DomicilioDTO("Calle", 123, "Temperley", "Buenos Aires")));
+        DomicilioDTO domicilio = new DomicilioDTO("Arturo M. Bas", 567, "Cordoba", "Cordoba");
+        pacienteService.guardar(new PacienteDTO("Martin", "Marley", "12345678", new Date(), domicilio));
 
         Assert.assertNotNull(pacienteService.buscarPorId(3L));
     }

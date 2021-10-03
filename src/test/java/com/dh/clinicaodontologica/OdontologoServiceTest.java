@@ -23,13 +23,13 @@ public class OdontologoServiceTest {
 
 
     public void cargarDataSet() {
-        this.odontologoService.guardar(new OdontologoDTO("Santiago", "Paz", 3455647));
+        this.odontologoService.guardar(new OdontologoDTO("Miguel", "Ocampo", 54321));
     }
 
     @Test
     public void agregarOdontologo() {
         this.cargarDataSet();
-        OdontologoDTO odontologo = new OdontologoDTO("Juan", "Ramirez", 348971960);
+        OdontologoDTO odontologo = new OdontologoDTO("Carla", "Minerva", 123456);
         odontologoService.guardar(odontologo);
         Assert.assertNotNull(odontologoService.buscarPorId(2L));
 
@@ -46,7 +46,7 @@ public class OdontologoServiceTest {
     public void traerTodos() {
         Collection<OdontologoDTO> odontologos = odontologoService.listarTodos();
         Assert.assertEquals(1, odontologos.size());
-        OdontologoDTO odontologo = new OdontologoDTO("Juan", "Ramirez", 348971960);
+        OdontologoDTO odontologo = new OdontologoDTO("Jose", "Nolose", 123123);
         odontologoService.guardar(odontologo);
         odontologos = odontologoService.listarTodos();
         Assert.assertEquals(2, odontologos.size());
